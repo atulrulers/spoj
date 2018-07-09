@@ -1,3 +1,8 @@
+// https://www.spoj.com/problems/BAISED/ 
+/*
+    Greedy approach will work in O(n) time.
+*/
+
 #include <bits/stdc++.h>
 
 using namespace std;
