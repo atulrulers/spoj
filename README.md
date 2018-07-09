@@ -1,1 +1,2 @@
- This repository contains solution of various #spoj problems in C++
+ # SPOJ 
+ This repository contains solution of various spoj problems in C++.
