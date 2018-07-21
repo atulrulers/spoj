@@ -1,0 +1,49 @@
+// https://www.spoj.com/problems/ARRAYSUB/ 
+// deque
+#include <iostream>
+#include <deque>
+
+using namespace std;
+
+int main(){
+   int n,k;
+   cin>>n;
+   int a[n];
+   for(int i=0;i<n;i++)
+        cin>>a[i];
+	
+	cin>>k;
+   deque<int> q(k); // deque with k elements
+
+   // process first k elements separately
+   int i = 0;
+   while( i<k ){
+
+      // if the current element is larger than the last element of queue remove it
+      while( !q.empty() and a[i] >= a[q.back()] ){
+        q.pop_back();
+      }
+      q.push_back(i);
+
+      i = i + 1 ;
+   }
+
+   while( i<n ){
+        cout<<a[q.front()]<<" "; // largest element of current window
+
+        // case 1 - remove all the elements from queue which are not the part of next block
+        while(!q.empty() and q.front() <= (i-k) ) q.pop_front() ;
+
+        // case 2 - remove the element if current element is larger than the last element of queue
+        while (!q.empty() and a[i] >= a[q.back()] ) q.pop_back() ;
+
+        // Add the current element in queue
+        q.push_back(i) ;
+         i = i + 1;
+   }
+
+   // element of last window
+   cout<<a[q.front()];
+
+   return 0;
+}
